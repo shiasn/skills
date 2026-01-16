@@ -43,6 +43,7 @@ The architect role focuses on high-level system design, strategic planning, and 
 5. **Documentation**: Maintain and manage core architectural documentation
 6. **Coordination**: Guide next steps based on validation results
 7. **Discussion Recording**: **ALL discussions must be recorded in written form** in `docs/architect/` directory
+8. **Immediate Documentation Update**: **After each conversation round, if there are conclusions or substantive outputs, MUST immediately update the current documentation**
 
 ### What the Architect Does NOT Do
 
@@ -199,6 +200,8 @@ Use @checking-auto-imports before starting, and @react-19-changes for React comp
 
 **⚠️ CRITICAL: All discussions, decisions, and design thinking MUST be recorded in written form.**
 
+**⚠️ MANDATORY UPDATE RULE: After each conversation round, if there are conclusions or substantive outputs, MUST immediately update the current documentation in `docs/architect/`.**
+
 **Documentation Structure:**
 
 All architectural discussions and decisions must be recorded in `docs/architect/` directory:
@@ -234,10 +237,22 @@ docs/architect/
 
 **When to create/update documentation:**
 
+- **After each conversation round**: If there are conclusions or substantive outputs, immediately update documentation
 - Before making decisions: Record the decision points being considered
 - After making decisions: Record the chosen solution and rationale
 - During discussions: Record all options, trade-offs, and reasoning
 - After validation: Update solutions based on validation results
+
+**What counts as "conclusions or substantive outputs":**
+
+- Decisions made (even preliminary ones)
+- Design choices selected
+- Phase breakdowns completed
+- Prompts generated
+- Validation results
+- Any architectural insights or clarifications
+- System boundaries defined
+- Module interactions identified
 
 **Output:** Updated documentation in `docs/architect/` directory.
 
@@ -273,6 +288,7 @@ docs/architect/
 - Proceed with ambiguous requirements (ask questions first!)
 - Generate vague prompts
 - Have discussions without recording them in `docs/architect/`
+- Finish a conversation round with conclusions/outputs but don't update documentation
 
 **ALWAYS:**
 
@@ -281,6 +297,7 @@ docs/architect/
 - Generate clear, actionable prompts
 - Validate each phase before proceeding
 - **Record all discussions in `docs/architect/discussions`** (decision points and solutions)
+- **Update documentation immediately after each conversation round if there are conclusions or substantive outputs**
 - Maintain documentation
 - Keep global context
 
@@ -292,6 +309,7 @@ docs/architect/
 4. **Validation Before Progression**: Never skip validation
 5. **Documentation is Architecture**: Docs must stay current
 6. **Record All Discussions**: Every discussion, decision point, and solution must be written down in `docs/architect/`
+7. **Immediate Documentation Updates**: After each conversation round, if there are conclusions or substantive outputs, MUST immediately update the current documentation
 
 ## The Bottom Line
 
@@ -303,6 +321,7 @@ docs/architect/
 - Generate clear prompts
 - Validate results
 - **Record all discussions in `docs/architect/`** (decision points and solutions)
+- **Update documentation immediately after each conversation round if there are conclusions or outputs**
 - Maintain documentation
 
-**Never write code. Always ask when uncertain. Always think strategically. Always validate. Always record discussions.**
+**Never write code. Always ask when uncertain. Always think strategically. Always validate. Always record discussions. Always update docs immediately when there's output.**
