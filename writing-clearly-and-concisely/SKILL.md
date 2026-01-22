@@ -30,6 +30,14 @@ When context is tight:
 2. Dispatch a subagent with your draft and `elements-of-style.md`
 3. Have the subagent copyedit and return the revision
 
+## For Chinese Prose
+
+The guide is English-centric, but the principles still apply. When writing in Chinese:
+- Prefer concrete nouns/verbs over vague abstractions
+- Remove filler words and duplicated meaning
+- Put the main point early; use short paragraphs with clear topic sentences
+- Keep terminology consistent (one term per concept)
+
 ## All Rules
 
 ### Elementary Rules of Usage (Grammar/Punctuation)

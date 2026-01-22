@@ -7,7 +7,7 @@ description: Use when completing tasks, implementing major features, or before m
 
 Dispatch code-reviewer subagent to catch issues before they cascade.
 
-**Core principle:** Review early, review often.
+**Core principle:** Review early, review with evidence, fix issues before they compound.
 
 ## When to Request Review
 
@@ -25,16 +25,36 @@ Dispatch code-reviewer subagent to catch issues before they cascade.
 
 ## How to Request
 
-**1. Get git SHAs:**
+## Inputs (Required)
+
+- A clear requirements reference (plan link, spec, issue, acceptance criteria)
+- A git range to review (base SHA → head SHA)
+- A brief statement of what was implemented (for reviewer focus)
+
+**Missing input handling:**
+- If you cannot confidently choose a base SHA, STOP and ask (or provide 2-3 base options with trade-offs).
+
+## Workflow
+
+### Step 1: Choose the Review Range (base/head)
 
 ```bash
 BASE_SHA=$(git rev-parse HEAD~1)  # or origin/main
 HEAD_SHA=$(git rev-parse HEAD)
 ```
 
-**2. Dispatch code-reviewer subagent:**
+Guidance:
+- Prefer a base that matches the start of the unit of work (previous task commit, branch base, or `origin/main`).
+- If the diff is too large to review meaningfully, split work or review in multiple ranges.
 
-Use Task tool with code-reviewer type, fill template at `code-reviewer.md`
+### Step 2: Dispatch code-reviewer subagent
+
+Use the template at `code-reviewer.md`.
+
+Provide:
+- `{WHAT_WAS_IMPLEMENTED}` / `{DESCRIPTION}`: what changed (short)
+- `{PLAN_REFERENCE}` / `{PLAN_OR_REQUIREMENTS}`: what it should do
+- `{BASE_SHA}` / `{HEAD_SHA}`: the exact diff range
 
 **Placeholders:**
 
@@ -44,40 +64,16 @@ Use Task tool with code-reviewer type, fill template at `code-reviewer.md`
 - `{HEAD_SHA}` - Ending commit
 - `{DESCRIPTION}` - Brief summary
 
-**3. Act on feedback:**
+### Step 3: Act on feedback
 
 - Fix Critical issues immediately
 - Fix Important issues before proceeding
 - Note Minor issues for later
 - Push back if reviewer is wrong (with reasoning)
 
-## Example
+### Step 4: Re-review if needed
 
-```
-[Just completed Task 2: Add verification function]
-
-You: Let me request code review before proceeding.
-
-BASE_SHA=$(git log --oneline | grep "Task 1" | head -1 | awk '{print $1}')
-HEAD_SHA=$(git rev-parse HEAD)
-
-[Dispatch code-reviewer subagent]
-  WHAT_WAS_IMPLEMENTED: Verification and repair functions for conversation index
-  PLAN_OR_REQUIREMENTS: Task 2 from docs/plans/deployment-plan.md
-  BASE_SHA: a7981ec
-  HEAD_SHA: 3df7661
-  DESCRIPTION: Added verifyIndex() and repairIndex() with 4 issue types
-
-[Subagent returns]:
-  Strengths: Clean architecture, real tests
-  Issues:
-    Important: Missing progress indicators
-    Minor: Magic number (100) for reporting interval
-  Assessment: Ready to proceed
-
-You: [Fix progress indicators]
-[Continue to Task 3]
-```
+- If you made non-trivial changes in response to review, request review again over the new range (or same range if it’s still accurate).
 
 ## Integration with Workflows
 

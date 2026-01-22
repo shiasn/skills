@@ -185,7 +185,7 @@ export default {
 
 ### Rule 1: Auto-Imports Are Values Only
 
-**❌ WRONG:**
+**BAD:**
 
 ```typescript
 // Don't assume types are auto-imported
@@ -195,7 +195,7 @@ function useUser(): User {
 }
 ```
 
-**✅ CORRECT:**
+**GOOD:**
 
 ```typescript
 // Types must be explicitly imported
@@ -207,7 +207,7 @@ function useUser(): User {
 
 ### Rule 2: Don't Duplicate Auto-Imports
 
-**❌ WRONG:**
+**BAD:**
 
 ```typescript
 import { ref, computed } from "vue"; // Unnecessary if auto-imported
@@ -217,7 +217,7 @@ export function useCounter() {
 }
 ```
 
-**✅ CORRECT:**
+**GOOD:**
 
 ```typescript
 // No import needed if auto-imported
@@ -228,7 +228,7 @@ export function useCounter() {
 
 ### Rule 3: Check Before Writing Code
 
-**❌ WRONG:**
+**BAD:**
 
 ```typescript
 // Writing code without checking auto-imports
@@ -237,7 +237,7 @@ export function useAuth() {
 }
 ```
 
-**✅ CORRECT:**
+**GOOD:**
 
 ```typescript
 // After checking: useRouter is auto-imported from vue-router

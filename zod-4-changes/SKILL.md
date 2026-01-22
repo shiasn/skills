@@ -208,7 +208,7 @@ import { z } from "@zod/mini";
 
 ## Common Mistakes
 
-| ❌ Wrong (Zod 3.x)                   | ✅ Correct (Zod 4.x)               |
+| Wrong (Zod 3.x)                     | Correct (Zod 4.x)                 |
 | ------------------------------------ | ---------------------------------- |
 | `z.string().email()`                 | `z.email()` (preferred)            |
 | `zodToJsonSchema(schema)` (external) | `schema.toJSONSchema()` (built-in) |

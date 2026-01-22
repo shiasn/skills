@@ -30,21 +30,12 @@ This skill uses a two-phase approach: classical extraction followed by LLM-power
 
 ## Process
 
-```dot
-digraph duplicate_detection {
-  rankdir=TB;
-  node [shape=box];
-
-  extract [label="1. Extract function catalog\n./scripts/extract-functions.sh"];
-  categorize [label="2. Categorize by domain\n(haiku subagent)"];
-  split [label="3. Split into categories\n./scripts/prepare-category-analysis.sh"];
-  detect [label="4. Find duplicates per category\n(opus subagent per category)"];
-  report [label="5. Generate report\n./scripts/generate-report.sh"];
-  review [label="6. Human review & consolidate"];
-
-  extract -> categorize -> split -> detect -> report -> review;
-}
-```
+1. Extract function catalog (`scripts/extract-functions.sh`)
+2. Categorize by domain (`scripts/categorize-prompt.md`)
+3. Split into categories (`scripts/prepare-category-analysis.sh`)
+4. Find duplicates per category (`scripts/find-duplicates-prompt.md`)
+5. Generate report (`scripts/generate-report.sh`)
+6. Human review and consolidation
 
 ### Phase 1: Extract Function Catalog
 

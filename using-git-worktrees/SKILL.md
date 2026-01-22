@@ -103,6 +103,8 @@ cd "$path"
 
 Auto-detect and run appropriate setup:
 
+Note: Dependency installation may require network access. If network access is restricted, request approval rather than skipping silently.
+
 ```bash
 # Node.js
 if [ -f package.json ]; then npm install; fi

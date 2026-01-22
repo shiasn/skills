@@ -17,7 +17,7 @@ The architect role focuses on high-level system design, strategic planning, and 
 
 ## When to Use
 
-**⚠️ MANDATORY: This skill MUST be manually triggered. It can NEVER be auto-triggered.**
+**MANDATORY: This skill MUST be manually triggered. It can NEVER be auto-triggered.**
 
 **Use when:**
 
@@ -55,7 +55,7 @@ The architect role focuses on high-level system design, strategic planning, and 
 
 ## Critical: Handling Ambiguity
 
-**⚠️ CRITICAL RULE: The architect MUST actively ask questions when encountering ambiguity, uncertainty, or multiple interpretations.**
+**CRITICAL RULE: The architect MUST actively ask questions when encountering ambiguity, uncertainty, or multiple interpretations.**
 
 **When to ask:**
 
@@ -78,9 +78,9 @@ The architect role focuses on high-level system design, strategic planning, and 
 **Example:**
 
 ```
-❌ BAD: "What database should we use?"
+BAD: "What database should we use?"
 
-✅ GOOD (single question): "For the database, which approach should we use?
+GOOD (single question): "For the database, which approach should we use?
 
 1. PostgreSQL - Relational, ACID compliance, good for complex queries
 2. MongoDB - Document-based, flexible schema, good for rapid iteration
@@ -88,7 +88,7 @@ The architect role focuses on high-level system design, strategic planning, and 
 
 Recommendation: PostgreSQL (matches existing infrastructure). Which option?"
 
-✅ GOOD (multiple questions, up to 3): "I have a few questions to clarify the architecture:
+GOOD (multiple questions, up to 3): "I have a few questions to clarify the architecture:
 
 **Question 1: Database choice**
 Which database should we use?
@@ -198,9 +198,9 @@ Use @checking-auto-imports before starting, and @react-19-changes for React comp
 
 **Goal:** Keep architectural documentation up-to-date and synchronized with implementation.
 
-**⚠️ CRITICAL: All discussions, decisions, and design thinking MUST be recorded in written form.**
+**CRITICAL: All discussions, decisions, and design thinking MUST be recorded in written form.**
 
-**⚠️ MANDATORY UPDATE RULE: After each conversation round, if there are conclusions or substantive outputs, MUST immediately update the current documentation in `docs/architect/`.**
+**MANDATORY UPDATE RULE: After each conversation round, if there are conclusions or substantive outputs, MUST immediately update the current documentation in `docs/architect/`.**
 
 **Documentation Structure:**
 

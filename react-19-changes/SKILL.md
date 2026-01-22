@@ -203,7 +203,7 @@ function ClientComponent() {
 
 ## Common Mistakes
 
-| ❌ Wrong (React 18)               | ✅ Correct (React 19)         |
+| Wrong (React 18)                 | Correct (React 19)           |
 | --------------------------------- | ----------------------------- |
 | `forwardRef((props, ref) => ...)` | `function({ ref, ...props })` |
 | `useRef()`                        | `useRef(null)`                |

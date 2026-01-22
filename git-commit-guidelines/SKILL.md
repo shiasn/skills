@@ -221,7 +221,7 @@ git commit -m "docs: 更新 API 使用文档
 
 ## Best Practices
 
-| Practice          | ✅ GOOD                                  | ❌ AVOID                         |
+| Practice          | GOOD                                     | AVOID                            |
 | ----------------- | ---------------------------------------- | -------------------------------- |
 | **Batch commits** | Separate commits for different features  | `git add .` with all changes     |
 | **Chinese**       | `feat(用户管理): 添加用户登录功能`       | `feat(user): add login feature`  |
@@ -231,7 +231,7 @@ git commit -m "docs: 更新 API 使用文档
 
 ## Common Mistakes
 
-| ❌ Wrong               | ✅ Correct                                 |
+| Wrong                 | Correct                                   |
 | ---------------------- | ------------------------------------------ |
 | `feat: 重构用户服务`   | `refactor(用户服务): 重构用户服务代码结构` |
 | `feat: add user login` | `feat(用户): 添加用户登录功能`             |

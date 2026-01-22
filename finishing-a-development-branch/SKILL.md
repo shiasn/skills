@@ -13,6 +13,15 @@ Guide completion of development work by presenting clear options and handling ch
 
 **Announce at start:** "I'm using the finishing-a-development-branch skill to complete this work."
 
+## Inputs (Required)
+
+- Project verification command(s) to prove the branch is healthy (tests/typecheck/lint/build as appropriate)
+- Target base branch name if non-standard (e.g., `main`, `master`, `develop`)
+- Whether destructive actions are allowed (branch deletion, worktree removal)
+
+**Missing input handling:**
+- If you don’t know the correct verification command for this repo → STOP and ask (do not guess).
+
 ## The Process
 
 ### Step 1: Verify Tests

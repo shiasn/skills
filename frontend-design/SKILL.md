@@ -4,44 +4,87 @@ description: Create distinctive, production-grade frontend interfaces with high 
 license: Complete terms in LICENSE.txt
 ---
 
-This skill guides creation of distinctive, production-grade frontend interfaces that avoid generic "AI slop" aesthetics. Implement real working code with exceptional attention to aesthetic details and creative choices.
+# Frontend Design
+
+## Overview
+
+Create production-grade UI with high design quality while respecting the project’s constraints (design system, tokens, accessibility, performance, and maintainability).
+
+**Core principle:** Constraints first (design system + tokens + accessibility), then aesthetics.
 
 **REQUIRED BEFORE CODING:** 
 - For JavaScript/TypeScript projects, use **checking-auto-imports** skill first to identify auto-imported modules
 - For React projects, use **react-19-changes** skill to ensure code follows React 19 patterns (not outdated React 18 patterns)
 - For form/data validation with Zod, use **zod-4-changes** skill to ensure Zod 4.x patterns (not outdated Zod 3.x patterns)
 
-The user provides frontend requirements: a component, page, application, or interface to build. They may include context about the purpose, audience, or technical constraints.
+## When to Use / When NOT
+
+**Use:**
+- The user asks to build or improve UI: components, pages, layouts, styling, or visual polish.
+
+**NOT:**
+- Requirements are unclear or multiple UX directions are plausible → use `brainstorming` first.
+- Purely functional changes with no UI/UX impact → do not trigger this skill.
+
+## Inputs (Required)
+
+- What to build: component/page/app artifact
+- Target environment: framework + build system + routing (if relevant)
+- Design constraints: design system, tokens, typography rules, spacing/grid rules
+- Behavior constraints: accessibility expectations, responsive targets, performance constraints
+- Acceptance criteria: what “done” looks like
+
+**Missing input handling:**
+- If any required input is missing and affects the design direction → STOP and ask one question (or offer 2-3 options).
 
 ## Design Thinking
 
-Before coding, understand the context and commit to a BOLD aesthetic direction:
-- **Purpose**: What problem does this interface solve? Who uses it?
-- **Tone**: Pick an extreme: brutally minimal, maximalist chaos, retro-futuristic, organic/natural, luxury/refined, playful/toy-like, editorial/magazine, brutalist/raw, art deco/geometric, soft/pastel, industrial/utilitarian, etc. There are so many flavors to choose from. Use these for inspiration but design one that is true to the aesthetic direction.
-- **Constraints**: Technical requirements (framework, performance, accessibility).
-- **Differentiation**: What makes this UNFORGETTABLE? What's the one thing someone will remember?
+Before coding, lock the constraints and then pick a clear design direction that fits them:
+- **Purpose:** what problem does the UI solve, and who uses it?
+- **Constraints:** design system rules, tokens, accessibility, performance, responsiveness
+- **Direction:** one coherent visual/interaction direction (avoid mixing multiple competing styles)
+- **Differentiation (optional):** one memorable “signature” detail that does not break constraints
 
-**CRITICAL**: Choose a clear conceptual direction and execute it with precision. Bold maximalism and refined minimalism both work - the key is intentionality, not intensity.
+**Critical:** be intentional. “Minimal” still requires precision; “rich” still requires restraint.
 
-Then implement working code (HTML/CSS/JS, React, Vue, etc.) that is:
-- Production-grade and functional
-- Visually striking and memorable
-- Cohesive with a clear aesthetic point-of-view
-- Meticulously refined in every detail
+## Workflow
+
+1. **Inventory existing UI primitives**
+   - Identify what the project already uses (component library, tokens, patterns).
+2. **Draft the structure**
+   - Layout composition, component breakdown, state/props boundaries.
+3. **Implement with the design system first**
+   - Prefer existing components and their APIs; only add custom styling when necessary.
+4. **Add polish within constraints**
+   - Spacing, typography hierarchy, states, micro-interactions (if allowed).
+5. **Verify**
+   - Typecheck/lint/build as appropriate
+   - Basic accessibility checks: keyboard navigation, focus visibility, label associations
+6. **Report**
+   - What changed, key files, and how to verify locally
 
 ## Frontend Aesthetics Guidelines
 
 Focus on:
-- **Typography**: Choose fonts that are beautiful, unique, and interesting. Avoid generic fonts like Arial and Inter; opt instead for distinctive choices that elevate the frontend's aesthetics; unexpected, characterful font choices. Pair a distinctive display font with a refined body font.
-- **Color & Theme**: Commit to a cohesive aesthetic. Use CSS variables for consistency. Dominant colors with sharp accents outperform timid, evenly-distributed palettes.
-- **Motion**: Use animations for effects and micro-interactions. Prioritize CSS-only solutions for HTML. Use Motion library for React when available. Focus on high-impact moments: one well-orchestrated page load with staggered reveals (animation-delay) creates more delight than scattered micro-interactions. Use scroll-triggering and hover states that surprise.
-- **Spatial Composition**: Unexpected layouts. Asymmetry. Overlap. Diagonal flow. Grid-breaking elements. Generous negative space OR controlled density.
-- **Backgrounds & Visual Details**: Create atmosphere and depth rather than defaulting to solid colors. Add contextual effects and textures that match the overall aesthetic. Apply creative forms like gradient meshes, noise textures, geometric patterns, layered transparencies, dramatic shadows, decorative borders, custom cursors, and grain overlays.
+- **Typography:** use the project’s typography system; if none exists, keep choices conservative unless user explicitly wants custom fonts.
+- **Color & theme:** do not hardcode colors; use the project’s token/theming system.
+- **Motion:** prefer subtle, purposeful motion; avoid motion that harms usability.
+- **Spatial composition:** make hierarchy obvious; spacing consistency is more important than novelty.
+- **Details:** add texture/visual depth only when it serves the direction and doesn’t break constraints.
 
-NEVER use generic AI-generated aesthetics like overused font families (Inter, Roboto, Arial, system fonts), cliched color schemes (particularly purple gradients on white backgrounds), predictable layouts and component patterns, and cookie-cutter design that lacks context-specific character.
+Avoid generic, context-free styling. Always tie visual decisions back to the product purpose and constraints.
 
-Interpret creatively and make unexpected choices that feel genuinely designed for the context. No design should be the same. Vary between light and dark themes, different fonts, different aesthetics. NEVER converge on common choices (Space Grotesk, for example) across generations.
+## Stop Conditions
 
-**IMPORTANT**: Match implementation complexity to the aesthetic vision. Maximalist designs need elaborate code with extensive animations and effects. Minimalist or refined designs need restraint, precision, and careful attention to spacing, typography, and subtle details. Elegance comes from executing the vision well.
+- Requirements are unclear and you cannot define acceptance criteria
+- The user expects a “brand new design language” but the project uses a strict design system
+- The only way to satisfy aesthetics would violate constraints (tokens, accessibility, performance)
 
-Remember: Claude is capable of extraordinary creative work. Don't hold back, show what can truly be created when thinking outside the box and committing fully to a distinctive vision.
+## Context Hygiene
+
+- Reuse existing components/patterns before creating new ones.
+- Don’t introduce new dependencies without explicit approval.
+
+## Bottom Line
+
+Deliver a cohesive UI that looks intentional and ships safely: constraints → structure → implementation → verification → report.

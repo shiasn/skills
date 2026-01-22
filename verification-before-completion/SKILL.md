@@ -13,6 +13,17 @@ Claiming work is complete without verification is dishonesty, not efficiency.
 
 **Violating the letter of this rule is violating the spirit of this rule.**
 
+**Announce at start:** "I'm using the verification-before-completion skill to verify before making any success claims."
+
+## When to Use / When NOT
+
+**Use:**
+- Any time you are about to claim: complete/fixed/passing/shipping/ready.
+- Before committing, pushing, creating PRs, or moving to the next task.
+
+**NOT:**
+- If you are still investigating and not making claims. (But the moment you want to claim progress, use this gate.)
+
 ## The Iron Law
 
 ```
@@ -77,42 +88,37 @@ Skip any step = lying, not verifying
 
 **Tests:**
 ```
-✅ [Run test command] [See: 34/34 pass] "All tests pass"
-❌ "Should pass now" / "Looks correct"
+GOOD: [Run test command] [See: 34/34 pass] "All tests pass"
+BAD: "Should pass now" / "Looks correct"
 ```
 
 **Regression tests (TDD Red-Green):**
 ```
-✅ Write → Run (pass) → Revert fix → Run (MUST FAIL) → Restore → Run (pass)
-❌ "I've written a regression test" (without red-green verification)
+GOOD: Write → Run (pass) → Revert fix → Run (MUST FAIL) → Restore → Run (pass)
+BAD: "I've written a regression test" (without red-green verification)
 ```
 
 **Build:**
 ```
-✅ [Run build] [See: exit 0] "Build passes"
-❌ "Linter passed" (linter doesn't check compilation)
+GOOD: [Run build] [See: exit 0] "Build passes"
+BAD: "Linter passed" (linter doesn't check compilation)
 ```
 
 **Requirements:**
 ```
-✅ Re-read plan → Create checklist → Verify each → Report gaps or completion
-❌ "Tests pass, phase complete"
+GOOD: Re-read plan → Create checklist → Verify each → Report gaps or completion
+BAD: "Tests pass, phase complete"
 ```
 
 **Agent delegation:**
 ```
-✅ Agent reports success → Check VCS diff → Verify changes → Report actual state
-❌ Trust agent report
+GOOD: Agent reports success → Check VCS diff → Verify changes → Report actual state
+BAD: Trust agent report
 ```
 
 ## Why This Matters
 
-From 24 failure memories:
-- your human partner said "I don't believe you" - trust broken
-- Undefined functions shipped - would crash
-- Missing requirements shipped - incomplete features
-- Time wasted on false completion → redirect → rework
-- Violates: "Honesty is a core value. If you lie, you'll be replaced."
+False completion claims destroy trust and waste time. Verification is the cheapest way to avoid rework and regressions.
 
 ## When To Apply
 

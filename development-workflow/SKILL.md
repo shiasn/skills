@@ -26,27 +26,25 @@ Development is not linear - it's iterative. Good development alternates between 
 - Emergency hotfixes (go direct to TDD)
 - Throwaway prototypes
 
+## Inputs (Recommended)
+
+- Goal and scope (what is changing, what is not)
+- Constraints (compatibility, performance, deadlines)
+- Verification bar (what must pass to claim progress)
+- Tracking context (issue/plan reference, if any)
+
+**Missing input handling:**
+- If scope or verification bar is unclear → STOP and clarify before implementing.
+
 ## The Development Cycle
 
 Development follows five phases that may repeat:
 
-```dot
-digraph dev_cycle {
-    rankdir=LR;
-    design [label="DESIGN\nUnderstand & plan", shape=box, style=filled, fillcolor="#e6f3ff"];
-    implement [label="IMPLEMENT\nBuild with TDD", shape=box, style=filled, fillcolor="#ccffcc"];
-    refine [label="REFINE\nSimplify & improve", shape=box, style=filled, fillcolor="#fff4cc"];
-    document [label="DOCUMENT\nExplain & guide", shape=box, style=filled, fillcolor="#ffe6cc"];
-    review [label="REVIEW\nVerify quality", shape=box, style=filled, fillcolor="#ffcccc"];
-
-    design -> implement;
-    implement -> refine;
-    refine -> document;
-    document -> review;
-    review -> implement [label="need changes"];
-    review -> design [label="major issues"];
-}
-```
+- DESIGN: understand & plan
+- IMPLEMENT: build with TDD
+- REFINE: simplify & improve
+- DOCUMENT: explain & guide
+- REVIEW: verify quality
 
 ### Phase 1: DESIGN
 
@@ -125,11 +123,11 @@ Integration Test (passing)
 When creating commits, use **git-commit-guidelines** skill to ensure proper format.
 
 ```bash
-# ✅ Good: Focused, clear, follows conventions
+# GOOD: Focused, clear, follows conventions
 "feat(加载器): 实现文件发现和解析功能"
 "test(配置): 添加配置文件加载的集成测试"
 
-# ❌ Bad: Too large, vague, doesn't follow conventions
+# BAD: Too large, vague, doesn't follow conventions
 "Add configuration feature"
 "Update everything"
 ```
@@ -199,14 +197,14 @@ When creating commits, use **git-commit-guidelines** skill to ensure proper form
 **What to document:**
 
 ```markdown
-# ✅ Document:
+# Document:
 
 - What the feature does (user perspective)
 - How to configure/use it
 - Examples of common use cases
 - Configuration options and defaults
 
-# ❌ Don't document:
+# Don't document:
 
 - How the code works (code should be self-explanatory)
 - What each function does (obvious from names)

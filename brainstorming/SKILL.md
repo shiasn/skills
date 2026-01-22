@@ -11,6 +11,24 @@ Help turn ideas into fully formed designs and specs through natural collaborativ
 
 Start by understanding the current project context, then ask questions one at a time to refine the idea. Once you understand what you're building, present the design in small sections (200-300 words), checking after each section whether it looks right so far.
 
+## When to Use / When NOT
+
+**Use:**
+- Before any creative work (new features, new components, behavior changes, or UX changes).
+
+**NOT:**
+- You already have a detailed plan and just need execution → use `executing-plans` or `subagent-driven-development`.
+- The task is purely mechanical and well-scoped (no design decisions) → proceed without brainstorming.
+
+## Inputs (Required)
+
+- The initial idea / desired outcome
+- Constraints (tech, timeline, compatibility, UX/a11y)
+- Success criteria (how we know it’s done)
+
+**Missing input handling:**
+- If constraints or success criteria are unclear → ask one question at a time.
+
 ## The Process
 
 **Understanding the idea:**

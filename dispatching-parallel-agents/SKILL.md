@@ -13,24 +13,6 @@ When you have multiple unrelated failures (different test files, different subsy
 
 ## When to Use
 
-```dot
-digraph when_to_use {
-    "Multiple failures?" [shape=diamond];
-    "Are they independent?" [shape=diamond];
-    "Single agent investigates all" [shape=box];
-    "One agent per problem domain" [shape=box];
-    "Can they work in parallel?" [shape=diamond];
-    "Sequential agents" [shape=box];
-    "Parallel dispatch" [shape=box];
-
-    "Multiple failures?" -> "Are they independent?" [label="yes"];
-    "Are they independent?" -> "Single agent investigates all" [label="no - related"];
-    "Are they independent?" -> "Can they work in parallel?" [label="yes"];
-    "Can they work in parallel?" -> "Parallel dispatch" [label="yes"];
-    "Can they work in parallel?" -> "Sequential agents" [label="no - shared state"];
-}
-```
-
 **Use when:**
 - 3+ test files failing with different root causes
 - Multiple subsystems broken independently
@@ -41,6 +23,15 @@ digraph when_to_use {
 - Failures are related (fix one might fix others)
 - Need to understand full system state
 - Agents would interfere with each other
+
+## Inputs (Required)
+
+- A list of failures grouped by file/subsystem (include error messages/stack traces)
+- Current branch/commit context (what changed recently)
+- Constraints: what files each agent may touch (avoid overlap)
+
+**Missing input handling:**
+- If you cannot justify independence (root causes likely shared) → do not parallelize yet; investigate as one problem first.
 
 ## The Pattern
 
@@ -109,17 +100,17 @@ Return: Summary of what you found and what you fixed.
 
 ## Common Mistakes
 
-**❌ Too broad:** "Fix all the tests" - agent gets lost
-**✅ Specific:** "Fix agent-tool-abort.test.ts" - focused scope
+Too broad: "Fix all the tests" (agent loses focus)
+Preferred: "Fix <single test file / subsystem>" (narrow scope)
 
-**❌ No context:** "Fix the race condition" - agent doesn't know where
-**✅ Context:** Paste the error messages and test names
+No context: "Fix the race condition" (agent cannot locate)
+Preferred: paste failing test names + error messages
 
-**❌ No constraints:** Agent might refactor everything
-**✅ Constraints:** "Do NOT change production code" or "Fix tests only"
+No constraints: agent may refactor unrelated code
+Preferred: explicit boundaries ("tests only", or "production code allowed")
 
-**❌ Vague output:** "Fix it" - you don't know what changed
-**✅ Specific:** "Return summary of root cause and changes"
+Vague output: "Fix it" (you cannot review)
+Preferred: require root cause + changes + verification evidence
 
 ## When NOT to Use
 
@@ -169,12 +160,3 @@ After agents return:
 2. **Check for conflicts** - Did agents edit same code?
 3. **Run full suite** - Verify all fixes work together
 4. **Spot check** - Agents can make systematic errors
-
-## Real-World Impact
-
-From debugging session (2025-10-03):
-- 6 failures across 3 files
-- 3 agents dispatched in parallel
-- All investigations completed concurrently
-- All fixes integrated successfully
-- Zero conflicts between agent changes
